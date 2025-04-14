@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Free PNG to JPG converter. Convert PNG images to high-quality JPG format in seconds. No registration, no installation required." />
+  <meta name="keywords" content="PNG to JPG, image converter, free image converter, convert PNG, JPG converter, online image tool" />
+  <title>PNG to JPG Converter - Free & Instant Image Conversion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ...your existing styles remain unchanged... */
+
+     :root {
+      --primary: #2563eb;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --bg-light: #f9fafb;
+      --border-color: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: var(--text-dark);
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.75rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    p {
+      margin-bottom: 2rem;
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      background-color: var(--bg-light);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      color: green;
+      font-weight: 600;
+    }
+
+    .upload-box {
+      border: 2px dashed var(--border-color);
+      border-radius: 1rem;
+      padding: 3rem;
+      margin: 0 auto 2rem;
+      max-width: 600px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: #f8fafc;
+    }
+
+    .upload-box:hover {
+      border-color: var(--primary);
+      background-color: #eff6ff;
+    }
+
+    .upload-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .select-label {
+      color: var(--primary);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1.05rem;
+    }
+
+    #upload {
+      display: none;
+    }
+
+    .file-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .file-card {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      transition: all 0.2s ease;
+    }
+
+    .file-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .file-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--bg-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #64748b;
+    }
+
+    .file-details {
+      font-size: 0.95rem;
+    }
+
+    .file-details .name {
+      font-weight: 600;
+    }
+
+    .file-details .size {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    .file-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .file-actions select,
+    .file-actions button {
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .file-actions select {
+      border: 1px solid #d1d5db;
+      background-color: white;
+    }
+
+    .btn-convert {
+      background-color: var(--primary);
+      color: white;
+      font-weight: 600;
+    }
+
+    .btn-add {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+    }
+
+    .btn-icon {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+
+    .btn-remove {
+      background: transparent;
+      color: #ccc;
+      font-size: 1.2rem;
+      border: none;
+      cursor: pointer;
+      padding: 0 0.5rem;
+    }
+
+    .btn-remove:hover {
+      color: #ef4444;
+    }
+    
+    /* New section styles */
+    .info-section {
+      max-width: 900px;
+      margin: 4rem auto 2rem;
+      padding: 0 1rem;
+      text-align: left;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #444;
+    }
+
+    .info-section h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .info-section p {
+      margin-bottom: 1rem;
+    }
+
+    .info-section ul {
+      padding-left: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-section li {
+      list-style: disc;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+      border-top: 1px solid #eee;
+    }
+
+    footer a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Existing Upload UI -->
+  <h1>PNG to JPG Converter</h1>
+  <p>Convert PNG to JPG online for free. Simply drop your PNG images below to convert them to JPG in seconds.</p>
+
+  <div class="features">
+    <div class="feature">✅ Free Converter</div>
+    <div class="feature">✅ No Registration</div>
+  </div>
+
+  <div class="upload-box" onclick="document.getElementById('upload').click()">
+    <div class="upload-icon">📁</div>
+    <label for="upload" class="select-label">Click or Drag & Drop Images Here</label>
+    <input type="file" id="upload" accept="image/png" multiple>
+  </div>
+
+  <div class="file-list" id="fileList"></div>
+
+  <!-- ✅ SEO Optimized Info Section -->
+  <section class="info-section">
+    <h2>Why Convert PNG to JPG?</h2>
+    <p>PNG and JPG are both image file formats, but they are suited for different purposes. PNG supports transparency and is ideal for web graphics and logos, but it is not as efficient for large photo storage or printing.</p>
+    <p>JPG files, in contrast, are compressed, smaller in size, and widely accepted for web uploads, printing, and sharing. They don’t support transparency, but they are perfect for:</p>
+    <ul>
+      <li>Social media and web uploads</li>
+      <li>Email attachments</li>
+      <li>CMYK print compatibility</li>
+      <li>Better performance on websites</li>
+    </ul>
+
+    <h2>How to Convert PNG to JPG for Free?</h2>
+    <p>Our tool makes converting PNG to JPG easy. Just:</p>
+    <ul>
+      <li>Upload your PNG image(s)</li>
+      <li>Watch the conversion process in real time</li>
+      <li>Download each JPG or use the <strong>Download All</strong> button</li>
+    </ul>
+    <p>Need to convert more? Clear the queue and upload another batch — up to 20 files at a time!</p>
+
+    <h2>Is it Safe to Use?</h2>
+    <p>Yes! We never save your files. All uploads are auto-deleted within 1 hour. Your original images remain untouched on your device.</p>
+    <p>Enjoy secure, private, and instant PNG to JPG conversion at no cost.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 PNG to JPG Converter Made by Sambit D Swain. All files auto-delete after 1 hour. |
+    <a href="#">Terms</a> | <a href="#">Privacy Policy</a>
+  </footer>
+
+  <!-- JS Script -->
+  <script>
+    const fileList = document.getElementById('fileList');
+    const upload = document.getElementById('upload');
+
+    function formatBytes(bytes) {
+      const kb = bytes / 1024;
+      return `${kb.toFixed(1)} KB`;
+    }
+
+    upload.addEventListener('change', (event) => {
+      const files = event.target.files;
+      Array.from(files).forEach(file => {
+        const card = document.createElement('div');
+        card.className = 'file-card';
+
+        const info = document.createElement('div');
+        info.className = 'file-info';
+
+        const icon = document.createElement('div');
+        icon.className = 'file-icon';
+        icon.textContent = '🖼️';
+
+        const details = document.createElement('div');
+        details.className = 'file-details';
+        details.innerHTML = `
+          <div class="name">${file.name}</div>
+          <div class="size">${formatBytes(file.size)}</div>
+        `;
+
+        info.appendChild(icon);
+        info.appendChild(details);
+
+        const actions = document.createElement('div');
+        actions.className = 'file-actions';
+
+        const formatSelect = document.createElement('select');
+        formatSelect.innerHTML = `<option>JPG</option>`;
+
+        const addMoreBtn = document.createElement('button');
+        addMoreBtn.textContent = '+ Add More';
+        addMoreBtn.className = 'btn-add';
+        addMoreBtn.onclick = () => upload.click();
+
+        const settingsBtn = document.createElement('button');
+        settingsBtn.textContent = '⚙️';
+        settingsBtn.className = 'btn-icon';
+
+        const convertBtn = document.createElement('button');
+        convertBtn.textContent = 'Convert All';
+        convertBtn.className = 'btn-convert';
+        convertBtn.onclick = () => convertAndDownload(file);
+
+        const removeBtn = document.createElement('button');
+        removeBtn.innerHTML = '✖';
+        removeBtn.className = 'btn-remove';
+        removeBtn.onclick = () => card.remove();
+
+        actions.appendChild(formatSelect);
+        actions.appendChild(removeBtn);
+        actions.appendChild(addMoreBtn);
+        actions.appendChild(settingsBtn);
+        actions.appendChild(convertBtn);
+
+        card.appendChild(info);
+        card.appendChild(actions);
+        fileList.appendChild(card);
+      });
+    });
+
+    function convertAndDownload(file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = new Image();
+        img.onload = function () {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          canvas.toBlob(function (blob) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            let filename = file.name.replace(/\.png$/i, '.jpg');
+            if (!filename.endsWith('.jpg')) {
+              filename = filename + '.jpg';
+            }
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(url);
+          }, 'image/jpeg', 0.92);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+</body>
+</html>
