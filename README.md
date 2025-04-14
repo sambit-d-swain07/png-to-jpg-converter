@@ -26,7 +26,7 @@ An elegant and easy-to-use web app to convert PNG images to JPG instantly. Built
 
 ## 📦 Demo
 
-Live preview: [https://your-username.github.io/png-to-jpg-converter](https://your-username.github.io/png-to-jpg-converter)  
+Live preview: (https://sambit-d-swain07.github.io/png-to-jpg-converter/)
 _(Update with your GitHub Pages URL)_
 
 ---
@@ -45,5 +45,5 @@ See full license: [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/
 
 ## 🙌 Author
 
-Built with ❤️ by [Your Name]  
+Built with ❤️ by Sambit D Swain
 If this helps you, consider giving it a ⭐ on GitHub!
